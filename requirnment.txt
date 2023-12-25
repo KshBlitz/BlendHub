@@ -1,0 +1,2 @@
+# Save this content to requirements.txt
+flask==2.0.1

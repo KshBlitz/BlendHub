@@ -5,33 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Chatting Website</title>
+    <title>BlendChat</title>
 </head>
 <body>
-    <h2>Welcome to Chatting Website</h2>
+    <h2>Welcome to BlendChat</h2>
 
-    <!-- Join Chat Group Form -->
-    <form action="/join_chat" method="post">
-        <h3>Join Chat Group</h3>
-        <label for="groupKey">Group Key:</label>
-        <input type="text" id="groupKey" name="groupKey" required>
+    <!-- Join Chat Group Button -->
+    <button id="joinChatBtn" onclick="openModal('joinChatModal')">Join Group Chat</button>
 
-        <label for="guestNameJoin">Guest Name:</label>
-        <input type="text" id="guestNameJoin" name="guestNameJoin" required>
+    <!-- Create Chat Group Button -->
+    <button id="createChatBtn" onclick="openModal('createChatModal')">Create Group Chat</button>
 
-        <button type="submit">Join Chat</button>
-    </form>
+    <!-- Join Chat Modal -->
+    <div id="joinChatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('joinChatModal')">&times;</span>
+            <h3>Join Group Chat</h3>
+            <form onsubmit="joinChat(event)">
+                <!-- Swap the order of the labels and input fields -->
+                <label for="guestNameJoin">Your Name:</label>
+                <input type="text" id="guestNameJoin" name="guestNameJoin" required>
+    
+                <label for="groupKeyJoin">Group Key:</label>
+                <input type="text" id="groupKeyJoin" name="groupKeyJoin" required>
+    
+                <button type="submit">Join Chat</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- Create Chat Group Form -->
-    <form action="/create_chat" method="post">
-        <h3>Create Chat Group</h3>
-        <label for="adminName">Admin Name:</label>
-        <input type="text" id="adminName" name="adminName" required>
+    <!-- Create Chat Modal -->
+    <div id="createChatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createChatModal')">&times;</span>
+            <h3>Create Group Chat</h3>
+            <form onsubmit="createChat(event)">
+                <label for="groupKeyCreate">New Group Key:</label>
+                <input type="text" id="groupKeyCreate" name="groupKeyCreate" required>
 
-        <label for="groupKeyCreate">New Group Key:</label>
-        <input type="text" id="groupKeyCreate" name="groupKeyCreate" required>
+                <label for="adminNameCreate">Your Name:</label>
+                <input type="text" id="adminNameCreate" name="adminNameCreate" required>
 
-        <button type="submit">Create Chat Group</button>
-    </form>
+                <button type="submit">Create Chat</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
