@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Chatting Website</title>
+</head>
+<body>
+    <h2>Welcome to Chatting Website</h2>
+
+    <!-- Join Chat Group Form -->
+    <form action="/join_chat" method="post">
+        <h3>Join Chat Group</h3>
+        <label for="groupKey">Group Key:</label>
+        <input type="text" id="groupKey" name="groupKey" required>
+
+        <label for="guestNameJoin">Guest Name:</label>
+        <input type="text" id="guestNameJoin" name="guestNameJoin" required>
+
+        <button type="submit">Join Chat</button>
+    </form>
+
+    <!-- Create Chat Group Form -->
+    <form action="/create_chat" method="post">
+        <h3>Create Chat Group</h3>
+        <label for="adminName">Admin Name:</label>
+        <input type="text" id="adminName" name="adminName" required>
+
+        <label for="groupKeyCreate">New Group Key:</label>
+        <input type="text" id="groupKeyCreate" name="groupKeyCreate" required>
+
+        <button type="submit">Create Chat Group</button>
+    </form>
+</body>
+</html>
